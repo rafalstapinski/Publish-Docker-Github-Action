@@ -69,8 +69,8 @@ if [ "${INPUT_SNAPSHOT}" = "true" ]; then
   echo ::set-output name=snapshot-tag::"${SNAPSHOT_TAG}"
 else
   docker build $BUILDPARAMS -t ${DOCKERNAME} .
-  docker tag ${DOCKERNAME} 
-  docker push ${DOCKERNAME} ${INPUT_REGISTRY}:${DOCKERNAME}
+  docker tag ${DOCKERNAME} ${INPUT_REGISTRY}/${DOCKERNAME}
+  docker push ${INPUT_REGISTRY}/${DOCKERNAME}
 fi
 echo ::set-output name=tag::"${TAG}"
 
